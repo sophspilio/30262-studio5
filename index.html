@@ -31,6 +31,10 @@
       font-family: Montserrat, sans-serif;
       color: white;
     }
+    a {
+    text-decoration: underline;
+    color: #63AFAE;
+}
 
   </style>
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -40,8 +44,10 @@
 <body>
   <div id="map"></div>
   <div id="instructions">
-    <h2>🚰 Instructions</h2>
-    <p>Click anywhere on the map to see water sites within a 500m radius. Stand alone water sites will be highlighted in red.</p>
+    <h1> Water Access at the Zaatari Refugee Camp </h1>
+    <h3>🚰 Instructions 🚰</h3>
+    <p>Click anywhere on the map to see water sites within a 500m radius. Stand alone water sites will be highlighted in red.
+    See the <a href="https://spherestandards.org/">SPHERE Handbook</a> for more info.</p>
   </div>
   <script>
     // Data showing water points - replace the dummy URL with your own.
@@ -51,7 +57,7 @@
     mapboxgl.accessToken = 'pk.eyJ1Ijoic29waHNwaWxpbyIsImEiOiJja2xqeGtyNmgwb2RyMndxcm9qbHhkbnpvIn0.oB5O3-BnHjh_6GHeEiBqAw';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-v9', // imagery basemap - you may choose something else
+      style: 'mapbox://styles/mapbox/streets-v11', // imagery basemap - you may choose something else
       center: [36.3295, 32.2963], // starting position at Zaatari Camp
       zoom: 14, // starting zoom
     });
@@ -68,7 +74,7 @@
         },
         type: 'circle',
         paint: {
-          'circle-color': '#55A3D6',
+          'circle-color': '#55A3D6', //blue
           'circle-radius': 4,
           'circle-opacity': 1,
           'circle-stroke-width': 1,
@@ -83,7 +89,7 @@
         },
         type: 'circle',
         paint: {
-          'circle-color': '#E98D89',
+          'circle-color': '#E98D89', //red
           'circle-radius': 4
            }
       });
@@ -94,10 +100,12 @@
           type: 'geojson',
           data: { "type": "FeatureCollection", "features": [] }
         },
-        type: 'fill',
+        type: 'line',
         paint: {
-          'fill-color': '#fcf683',
-          'fill-opacity': 0.5
+          'line-color': '#B080DE',
+          'line-dasharray': [8,2],
+          'line-width': 5,
+          'line-opacity': 0.7
         }
       });
 
